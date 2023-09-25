@@ -2,47 +2,35 @@
 We will write a simple model where individuals become more likely to search for better quality food that is also harder to find, the larger individuals become. 
 
 # Overview
-## 1. Purpose and Patterns
-Answer this question: Does an ecosystem that contains only the highest quality foods always support a large and stable population for a species that relies on this resource
-## 2. Entities, state variables, and scales
+## Purpose and Patterns
+The main objective of this agent-based model is to explore and understand the dynamics of an ecosystem within the context of the landscape of fear framework in ecology. Specifically, it seeks to answer the following question: Does an ecosystem that contains only the highest quality foods always support a large and stable population for a species that relies on this resource? This model will investigate how food quality, individual size, and searching behavior influence the population dynamics of a herbivore species.
+
+## Entities, state variables, and scales
 ### Entities: structure of the model 
-- Agents: 1) Food resource 2) The species
-- Environments: The ecosystem of choice.
-- Other important parts of the model and the variables that describe them and their behaviors: 
-### State variables: describes aspects of environment or agents. 
-> Food
-- Food resource: What is it
-- Food accessibility: Higher quality food is harder to find and will take longer to find/process compared to lower quality food sources 
-- Food quality: quality of the food resource (quality is related to the accessibility of that food resource)
-- Food resource replication: how the resource changes
-> Species
-- The species: What it is
-- Animal Size: How large or small the animal is
-- Searching behavior: An individual's willingness to search for high-quality food (larger individuals are more likely to search for better-quality food whereas smaller individuals may "make do" with lower quality food)
-- Herbivore species reproduction: rate of reproduction
+The model simulates individual herbivores as agents within the ecosystem, where the ecosystem contains various food sources. State Variables: Each individual herbivore has one attribute: size, which is related to their willingness to search for high-quality food. Each food source has a specified quality (related to the accessibility of the resource-probability of finding it- and how nutritionally useful it is). Scales: The model operates on both spatial and temporal scales. Spatially, it represents an area where herbivores interact with their environment, and temporally, it simulates the passage of time as herbivores search for and consume food. (Note that we do not specifically track the spatial component and we will not consider reproduction explicitly to keep this model simple.)
 
-### Scales: describes the spatial and temporal extent of the model. 
-The cycle will run on a generation cycle.
+## Process overview and scheduling
+Growth: Herbivores may grow over time, affecting their size and willingness to search for high-quality food. Food Resource Replication: Food resources of varying qualities will always be present within the environment. Searching Behavior: Herbivores will exhibit searching behavior based on their size and the quality of available food resources. Larger individuals are more likely to search for high-quality food, while smaller individuals may accept lower quality food.
 
-## 3. Process overview and scheduling
-1) Species seek out food
-2) change in animal size
-3) change in food resource quantity
-4) ecosystem responds
-5) Density-dependent and independent effects
-6) The cycle begins again
-
-# 4. Design concepts
+# Design concepts
 
 # Details
-### 5. Initialization
-Environment: 33-33-33 mix of low, medium, and high-quality food
-Animals: 33-33-33 mix of small, medium, and large animals
+### Initialization
+The simulation initializes with a defined number of herbivores with random initial sizes and reproductive statuses. Food resources are also randomly available in the landscape, with varying quality levels.
 
-### 6. Input data
-### 7. Submodels (is this not the same as process overview?)
-1) Species seek out food
-2) change in animal size
-3) change in food resource quantity
-4) ecosystem responds
-5) Density-dependent and independent effects
+Initialization and Termination: The simulation begins at time step one and continues for 100 steps.
+
+### Input data
+Data from ecological studies or literature to be used to parameterize the model, including values for growth rates, reproductive rates, and food quality thresholds. (We may make guesses at this in the interest of time.)
+
+### Submodels
+The model will include submodels for herbivore growth and food resource dynamics.
+
+### Parameters
+Model parameters include growth rates food quality thresholds, and the size-based probability of searching for high-quality food.
+
+### Observations
+The model's output includes observations of population size, individual size distributions, and food resource availability over time.
+
+### Stochasticity
+Stochastic elements (i.e. noise around a defined mean or optimum) may be included in the model to represent randomness in food resource availability and herbivore searching behavior.
