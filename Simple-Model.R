@@ -8,6 +8,10 @@
 #I connected my R code to GitHub using this really great guide. *Link below* 
 #https://statsandr.com/blog/how-to-upload-r-code-on-github-example-with-an-r-script-on-mac-os/
 
+directory = getwd()
+outdir    = paste(directory,"/output/",sep="")                    #directory to save model output  
+source(paste(directory, "/source/FunctionSourcer.R", sep = ''))   #source functions and set source directory
+
 --------------------------------------------------------------------------------
 ### Step 2 ###
 #Define parameters needed to run your model. Each parameter should have a comment 
@@ -25,8 +29,9 @@
 
 --------------------------------------------------------------------------------  
 ### Step 5 ###
-#Have the ability to change aspects of growth, food quality, and duration of 
-#seeking within the model.
+#Have the ability to change aspects within the model.
+
+#It is important to make these values objects so it is easy to change them later!
 
 #herbivores
 K = 500                   #carrying capacity
@@ -132,3 +137,4 @@ write.table(t(towrite), paste(outdir,"outputsummary.csv", sep=""), append=F, sep
 
 
 #end
+
